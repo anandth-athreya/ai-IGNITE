@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* your styles */
+}
+
+@layer base {
+  :root {
+    --background: 200 20% 98%;
+    --foreground: 210 40% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 15%;
+
+    --primary: 199 89% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 25% 95%;
+    --secondary-foreground: 210 40% 15%;
+
+    --muted: 200 20% 94%;
+    --muted-foreground: 210 15% 45%;
+
+    --accent: 180 45% 92%;
+    --accent-foreground: 180 60% 25%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 100% 20%;
+
+    --success: 142 71% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --critical: 0 84% 60%;
+    --critical-foreground: 0 0% 100%;
+
+    --border: 200 20% 90%;
+    --input: 200 20% 90%;
+    --ring: 199 89% 38%;
+
+    --radius: 0.75rem;
+
+    /* Healthcare specific tokens */
+    --healthcare-gradient: linear-gradient(135deg, hsl(199 89% 38%) 0%, hsl(180 60% 35%) 100%);
+    --healthcare-card-shadow: 0 4px 24px -4px hsl(199 89% 38% / 0.1);
+    --healthcare-hover-shadow: 0 8px 32px -8px hsl(199 89% 38% / 0.2);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 40% 8%;
+    --foreground: 200 20% 98%;
+
+    --card: 210 40% 12%;
+    --card-foreground: 200 20% 98%;
+
+    --popover: 210 40% 12%;
+    --popover-foreground: 200 20% 98%;
+
+    --primary: 199 85% 50%;
+    --primary-foreground: 210 40% 8%;
+
+    --secondary: 210 30% 18%;
+    --secondary-foreground: 200 20% 98%;
+
+    --muted: 210 30% 18%;
+    --muted-foreground: 200 15% 60%;
+
+    --accent: 180 40% 18%;
+    --accent-foreground: 180 60% 75%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 200 20% 98%;
+
+    --warning: 38 80% 45%;
+    --warning-foreground: 38 100% 95%;
+
+    --success: 142 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --critical: 0 70% 50%;
+    --critical-foreground: 0 0% 100%;
+
+    --border: 210 30% 20%;
+    --input: 210 30% 20%;
+    --ring: 199 85% 50%;
+
+    --healthcare-gradient: linear-gradient(135deg, hsl(199 85% 50%) 0%, hsl(180 60% 45%) 100%);
+    --healthcare-card-shadow: 0 4px 24px -4px hsl(0 0% 0% / 0.3);
+    --healthcare-hover-shadow: 0 8px 32px -8px hsl(199 85% 50% / 0.3);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+}
+
+@layer components {
+  .healthcare-card {
+    @apply bg-card rounded-xl border border-border;
+    box-shadow: var(--healthcare-card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .healthcare-card:hover {
+    box-shadow: var(--healthcare-hover-shadow);
+  }
+
+  .healthcare-gradient-bg {
+    background: var(--healthcare-gradient);
+  }
+
+  .healthcare-gradient-text {
+    background: var(--healthcare-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .mode-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200;
+  }
+
+  .mode-badge-patient {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .mode-badge-clinician {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .finding-card {
+    @apply p-4 rounded-lg border-l-4 bg-card;
+  }
+
+  .finding-normal {
+    @apply border-l-success bg-success/5;
+  }
+
+  .finding-warning {
+    @apply border-l-warning bg-warning/5;
+  }
+
+  .finding-critical {
+    @apply border-l-critical bg-critical/5;
+  }
+
+  .disclaimer-banner {
+    @apply bg-warning/10 border border-warning/30 rounded-lg p-4 text-sm text-warning-foreground;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
